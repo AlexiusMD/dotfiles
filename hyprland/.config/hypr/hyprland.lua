@@ -306,9 +306,10 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+local screenshot_dir = "~/Pictures/Screenshots"
 -- hyprshot for screenshots
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
-hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m window -o " .. screenshot_dir))
+hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region -o " .. screenshot_dir))
 
 -- hyprlock for locking screen
 hl.bind(mainMod .. " + CONTROL + l", hl.dsp.exec_cmd("hyprlock"))

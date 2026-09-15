@@ -1,6 +1,9 @@
-
 # OpenRGB
-
 openrgb/.config/OpenRGB/logs
 openrgb/.config/OpenRGB/OpenRGB.json
 openrgb/.config/OpenRGB/sizes.ors
+openrgb/.config/OpenRGB/*.bak
+openrgb/.config/OpenRGB/Configuration.json
+
+# Hypr
+hyprland/.config/hypr/scheme/
