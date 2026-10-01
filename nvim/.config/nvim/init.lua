@@ -28,7 +28,8 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } vim.opt.expandtab = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -152,6 +153,13 @@ require('tokyonight').setup {
   },
 }
 vim.cmd.colorscheme 'tokyonight-night'
+
+-- vim.pack.add { { src = "https://github.com/catppuccin/nvim", name = "catppuccin" } }
+-- require('catppuccin').setup {
+--   flavour=auto,
+--   transparent_background=true,
+-- }
+-- vim.cmd.colorscheme 'catppuccin-nvim'
 
 vim.pack.add { gh 'folke/todo-comments.nvim' }
 require('todo-comments').setup { signs = false }
@@ -467,4 +475,4 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4 et
