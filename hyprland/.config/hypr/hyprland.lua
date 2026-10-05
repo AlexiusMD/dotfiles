@@ -42,8 +42,8 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("hypridle")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
     hl.exec_cmd("udiskie")
-    hl.exec_cmd("openrgb --profile ~/.config/OpenRGB/lilas.orp --startminimized")
     hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+    hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
 end)
 
 
