@@ -4,17 +4,18 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "HDMI-A-1",
-    mode     = "preferred",
-    position = "0x0",
+    output   = "desc:Samsung Electric Company Odyssey G5 HX5Y800085",
+    mode     = "2560x1440@144",
+    position = "0x370",
     scale    = "1",
 })
 
 hl.monitor({
-    output   = "DP-2",
-    mode     = "preferred",
-    position = "1920x0",
-    scale    = "1",
+    output    = "desc:Dell Inc. DELL P2725H 5W73BJ4",
+    mode      = "1920x1080@100",
+    position  = "2560x0",
+    scale     = "1",
+    transform = 1,
 })
 
 ---------------------
@@ -54,7 +55,7 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-
+hl.env("SSH_AUTH_SOCK", "/run/user/1000/ssh-agent.socket")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -82,13 +83,13 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 20,
+        gaps_in  = 3,
+        gaps_out = 5,
 
-        border_size = 2,
+        border_size = 1,
 
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+            active_border   = { colors = {"rgba(ff8c42ee)", "rgba(ff4d4dee)", "rgba(b3001bee)"}, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
 

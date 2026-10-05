@@ -1,0 +1,31 @@
+# Mode
+show=drun
+term=kitty
+
+# Window
+width=600
+height=420
+location=center
+layer=overlay
+normal_window=false
+prompt=Search...
+
+# Layout
+orientation=vertical
+halign=fill
+content_halign=fill
+columns=1
+hide_scroll=true
+no_actions=true
+
+# Icons and text
+allow_images=true
+image_size=32
+allow_markup=true
+gtk_dark=true
+
+# Search behavior
+insensitive=true
+matching=fuzzy
+filter_rate=100
+sort_order=default

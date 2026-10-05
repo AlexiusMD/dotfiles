@@ -1,61 +1,123 @@
-{
+[
+  {
+    // Main bar: every monitor except the Dell (so it also works on your home PC)
+    "name": "main",
     "layer": "top",
     "position": "top",
-    "width": 1910,
-    "height": 25,
-    "margin": "5 0",
+    "output": "!DP-8",
+    "height": 34,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "reload_style_on_change": true,
 
-    "group/left" : {
-        "orientation": "horizontal",
-        "modules" : [
-            "mpris", "hyprland/workspaces"
-        ]
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "custom/notification", "tray"],
+
+    "hyprland/workspaces": {
+      "format": "{id}",
+      "all-outputs": false,
+      "on-click": "activate"
     },
-
-    "group/left-hidden" : {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 500,
-            "transition-left-to-right": false,
-            "click-to-reveal": true
-        },
-        "modules" : [
-            "custom/arrow-right", "cpu", "load"
-        ]
+    "hyprland/window": {
+      "max-length": 50,
+      "separate-outputs": true
     },
-
-    "group/left-hidden-top" : {
-        "orientation": "horizontal",
-        "modules" : [ "power-profiles-daemon", "group/left-hidden" ]
+    "clock": {
+      "format": "{:%H:%M}",
+      "format-alt": "{:%a %d %b %Y}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month",
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months":   "<span color='#ff4d4d'><b>{}</b></span>",
+          "days":     "<span color='#f2dcdc'>{}</span>",
+          "weeks":    "<span color='#8a6f6f'><small>W{}</small></span>",
+          "weekdays": "<span color='#ff8c42'><b>{}</b></span>",
+          "today":    "<span bgcolor='#ff4d4d' color='#1e1214'><b>{}</b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
     },
-
-    "group/right" : {
-        "orientation": "horizontal",
-        "modules" : [
-             "group/group-volume", "network", "tray", "custom/power"
-        ]
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "\uf026 muted",
+      "format-icons": { "default": ["\uf027", "\uf028"] },
+      "on-click": "pavucontrol",
+      "scroll-step": 5
     },
-
-    "group/right-hidden" : {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 500,
-            "transition-left-to-right": true,
-            "click-to-reveal": true
-        },
-        "modules" : [
-            "custom/arrow-left", "memory", "temperature"
-        ]
+    "network": {
+      "format-wifi": "\uf1eb {essid}",
+      "format-ethernet": "\uf0e8 {ifname}",
+      "format-disconnected": "\uf071 offline",
+      "tooltip-format": "{ifname}: {ipaddr}"
     },
+    "cpu": { "format": "CPU {usage}%", "interval": 3 },
+    "memory": { "format": "RAM {percentage}%", "interval": 5 },
+    "tray": { "spacing": 10 },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "\uf0f3<span foreground='#ff5555'><sup>●</sup></span>",
+        "none": "\uf0f3",
+        "dnd-notification": "\uf1f6<span foreground='#ff5555'><sup>●</sup></span>",
+        "dnd-none": "\uf1f6"
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
+    }
+  },
+  {
+    // Portrait Dell: only the essentials (1080px wide)
+    "name": "side",
+    "layer": "top",
+    "position": "top",
+    "output": "DP-8",
+    "height": 34,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
 
-    "group/right-hidden-top" : {
-        "orientation": "horizontal",
-        "modules" : [ "group/right-hidden",  "custom/ctlcenter" ]
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory"],
+
+    "hyprland/workspaces": { "format": "{id}", "all-outputs": false, "on-click": "activate" },
+    "clock": {
+      "format": "{:%H:%M}",
+      "format-alt": "{:%a %d %b}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month",
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months":   "<span color='#ff4d4d'><b>{}</b></span>",
+          "days":     "<span color='#f2dcdc'>{}</span>",
+          "weeks":    "<span color='#8a6f6f'><small>W{}</small></span>",
+          "weekdays": "<span color='#ff8c42'><b>{}</b></span>",
+          "today":    "<span bgcolor='#ff4d4d' color='#1e1214'><b>{}</b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
     },
-
-    "modules-left"   : ["group/left-hidden-top", "group/left"],
-    "modules-center" : ["clock"],
-    "modules-right"  : [ "group/right",  "group/right-hidden-top"],
-
-    "include": [ "~/.config/waybar/modules.jsonc" ]
-}
+    "cpu": { "format": "CPU {usage}%", "interval": 3 },
+    "memory": { "format": "RAM {percentage}%", "interval": 5 }
+  }
+]
