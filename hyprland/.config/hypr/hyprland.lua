@@ -41,7 +41,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("hypridle")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
     hl.exec_cmd("udiskie")
-    hl.exec_cmd("openrgb --profile ~/.config/OpenRGB/lilas.orp --startminimized")
+    hl.exec_cmd("openrgb --profile lilas --startminimized")
     hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 end)
 
@@ -54,7 +54,7 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-
+hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:/usr/local/share:/usr/share")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -82,14 +82,14 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 20,
+        gaps_in  = 3,
+        gaps_out = 10,
 
-        border_size = 2,
+        border_size = 1,
 
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            active_border   = { colors = {"rgba(C79F7Aee)", "rgba(8A7EA2ee)"}, angle = 45 },
+            inactive_border = "rgba(362A35aa)",
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
