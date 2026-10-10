@@ -1,0 +1,4 @@
+bibata-cursor-theme
+libretro-lrps2-git
+yay
+yay-debug
